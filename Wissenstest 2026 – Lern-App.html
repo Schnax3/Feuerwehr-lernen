@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wissenstest 2026 – Schläuche, Armaturen & Leinen</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f7f4ee;--card:#fff;--tx:#1d2733;--mu:#667085;--ac:#c62828;--ac2:#3a9bb5;--ok:#2e7d32;--okb:#e3f3e4;--badb:#fbe4e4;--bd:#ddd6c8}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14181d;--card:#1e252d;--tx:#eceff3;--mu:#9aa5b1;--ac:#ef5350;--ac2:#5bc0de;--ok:#66bb6a;--okb:#1e3a22;--badb:#3d1f1f;--bd:#33404d}}
+:root[data-theme="dark"]{--bg:#14181d;--card:#1e252d;--tx:#eceff3;--mu:#9aa5b1;--ac:#ef5350;--ac2:#5bc0de;--ok:#66bb6a;--okb:#1e3a22;--badb:#3d1f1f;--bd:#33404d}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:640px;margin:0 auto;padding:16px}
+h1{font-size:1.4rem;margin:8px 0 2px}h2{font-size:1.15rem;margin:0 0 8px}
+.sub{color:var(--mu);margin:0 0 16px;font-size:.92rem}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin-bottom:12px}
+.topic{display:flex;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--bd);border-radius:12px;background:var(--card);margin-bottom:8px;cursor:pointer}
+.topic input{width:20px;height:20px;accent-color:var(--ac)}
+.topic small{color:var(--mu);display:block}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+button{font:inherit;border:0;border-radius:12px;padding:12px 16px;cursor:pointer;background:var(--ac);color:#fff;font-weight:600}
+button.sec{background:transparent;color:var(--tx);border:1px solid var(--bd)}
+button:disabled{opacity:.4;cursor:default}
+.grow{flex:1}
+.bar{height:6px;background:var(--bd);border-radius:3px;margin:8px 0 14px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac2)}
+.tag{display:inline-block;font-size:.78rem;background:var(--ac2);color:#fff;border-radius:6px;padding:2px 8px;margin-bottom:8px}
+.opt{display:block;width:100%;text-align:left;background:var(--card);color:var(--tx);border:1px solid var(--bd);margin-bottom:8px;font-weight:500}
+.opt.ok{background:var(--okb);border-color:var(--ok)}.opt.bad{background:var(--badb);border-color:var(--ac)}
+.big{font-size:2.4rem;font-weight:800;text-align:center;margin:8px 0}
+.wrong{border-left:4px solid var(--ac);padding-left:10px;margin:10px 0}
+.wrong small{color:var(--mu)}
+</style></head><body><main id="app"></main>
+<script>
+const D=[
+{n:"Druckschläuche",i:[
+["Größen","F (152), A (110), B (75), C (52/42), D (25 mm). Die Zahl ist der Innendurchmesser. Je größer, desto mehr Durchfluss und desto schwerer."],
+["Arbeitsdruck","F 152 bis A 110: 12 bar. B 75 bis D 25: 16 bar."],
+["Längen","B: 5/20 m (35 m nur für Drehleitern). C: 15 m (30 m im Schlauchpaket). D: 5/15 m (20 m Vegetationsbrand). A: 5/20 m. F: nicht festgelegt."],
+["Einsatz","F: Wasserfördersystem Bayern. B: Hydrant bis Verteiler, lange Strecken. C: Angriffsleitung. D: Kübelspritze, Kleinbrände, Nachlöscharbeiten."],
+["Schlauchfarben","Weiß = Prüfnummer, Rot -1, Gelb -2, Orange -3, Grün -4, sonstige -5."],
+["Rollschlauch / formstabil","Rollschlauch: leer rollbar oder faltbar. Formstabil (S-Schlauch, Schnellangriff): nur auf Haspel, 30 m (DN 33) oder 50 m (DN 25), C-Kupplung."]],
+q:[
+["Was bedeutet die Zahl bei C 42?","Innendurchmesser 42 mm","Länge 42 m","Prüfdruck 42 bar","Gewicht 42 kg"],
+["Welcher Arbeitsdruck gilt für B-Schläuche?","16 bar","12 bar","8 bar","20 bar"],
+["Welche Länge hat ein C-Schlauch üblicherweise?","15 m","5 m","35 m","50 m"],
+["Welcher ist der kleinste Druckschlauch?","D-Schlauch","C-Schlauch","F-Schlauch","S-Schlauch"],
+["Gelber Schlauch: Prüfnummer ergänzt mit …","– 2","– 1","– 3","– 4"],
+["Wie heißt der formstabile Schlauch für die Schnellangriffseinrichtung?","S-Schlauch","Rollschlauch","Schlauchpuppe","Saugschlauch"]]},
+{n:"Umgang mit Druckschläuchen",i:[
+["Auslegen","Immer knick- und drallfrei. Eigene Leitung: vom Verteiler zur Einsatzstelle. Der Truppführer sorgt für ausreichende Schlauchreserve."],
+["Kuppeln","D und C: ein Feuerwehrdienstleistender, in der Jugendfeuerwehr immer zwei Anwärter. B: immer zwei. Zusammenkuppeln im Uhrzeigersinn, Auseinanderkuppeln dagegen. Kupplungsschlüssel über Kreuz halten."],
+["Schlauchtragekorb","Für B, C, D, auf jedem Löschfahrzeug. Zwei Anwärter tragen, ein dritter hält das freie Ende."],
+["Schnelle Wasserabgabe","Schnellangriffseinrichtung: formstabiler Schlauch auf Haspel, dauerhaft mit der Pumpe verbunden. Sonst: meist 2 x 15 m C/D gefaltet, nicht dauerhaft verbunden."],
+["Schlauchpaket / -puppe","Paket: gefalteter Schlauch mit Bändern, 15 oder 30 m, meist mit Hohlstrahlrohr und Kugelhahn; unter Druck bilden sich Loops (enge Treppenräume). Puppe: zwei D/C gekuppelt über die Schulter, Vegetationsbrand."],
+["Schnellangriffsverteiler / Haspel","Verteiler: meist 20 m B-Schlauch angekuppelt, Schlauch vor Inbetriebnahme auslegen (Absprache mit Maschinist). Fahrbare Haspel: beim Ziehen Totmannbremse halten."],
+["Zurücknehmen","Erst entwässern (hochheben, Gefälle nutzen), dann gerollt oder in Buchten über die Schulter, Kupplungen vor dem Körper. Nicht schleifen. Im Winter Eisbildung beachten."]],
+q:[
+["Wer kuppelt B-Schläuche?","Zwei Feuerwehrdienstleistende","Einer allein","Der Maschinist","Der Truppführer allein"],
+["In welche Richtung wird zusammengekuppelt?","Im Uhrzeigersinn","Gegen den Uhrzeigersinn","Egal","Nur von oben nach unten"],
+["Wie werden C-Schläuche in der Jugendfeuerwehr gekuppelt?","Immer von zwei Anwärtern","Von einem Anwärter","Nur vom Gruppenführer","Gar nicht"],
+["Wie sind Schläuche zu verlegen?","Knick- und drallfrei","Stramm gespannt","Verdreht","Über scharfe Kanten"],
+["Welcher Schlauch ist beim Schnellangriffsverteiler im Regelfall verlastet?","20 m B-Schlauch","15 m C-Schlauch","30 m D-Schlauch","5 m A-Schlauch"],
+["Was muss beim Ziehen der fahrbaren Schlauchhaspel gehalten werden?","Totmannbremse","Kupplung","Hebel","Ventilleine"],
+["Was bildet ein Schlauchpaket unter Druck mit entfernten Bändern?","Loops","Knoten","Buchten","Ringe"]]},
+{n:"Saugschläuche",i:[
+["Größen","A (110), B (75), C (52 mm). D (19–25 mm) nur als Ansaugschlauch für Löschmittelzusätze. Länge: A 2,50/1,60 m, B und C 1,60 m."],
+["Bezeichnung","A-110-1500-K: Größe A, Durchmesser 110 mm, Länge 1500 mm, K = Kupplung."],
+["Einsatz","A: genormter Saugschlauch (Gewässer, Löschwasserbehälter, -brunnen). B/C: Schmutzwasserpumpen, tragbare Pumpen. D: Zumischer und Schaummittel."],
+["Auslegen / Kuppeln","Saugleitung von der Saugstelle zur Pumpe, zwei Trupps kuppeln. Nicht für das öffentliche Trinkwassernetz! Kuppeln meist mit Kupplungsschlüssel, A auch mit Schnellkupplungsgriffen. A und B immer zu zweit."]],
+q:[
+["Was bedeutet 1500 bei A-110-1500-K?","Länge in mm","Durchmesser in mm","Druck in bar","Gewicht in kg"],
+["Welchen Durchmesser hat der A-Saugschlauch?","110 mm","75 mm","52 mm","25 mm"],
+["Wofür sind Saugschläuche NICHT bestimmt?","Entnahme aus dem öffentlichen Trinkwassernetz","Entnahme aus Bächen","Entnahme aus Zisternen","Entnahme aus Löschwasserbrunnen"],
+["Welcher Schlauch wird bei Verwendung eines Zumischers als Ansaugschlauch genutzt?","D-Ansaugschlauch","A-Saugschlauch","B-Saugschlauch","C-Saugschlauch"]]},
+{n:"Wasserentnahme",i:[
+["Standrohr","Für Unterflurhydranten. Oberteil drehbar, zwei B-Abgänge mit Niederschraubventil. Klauenmutter nach jedem Einsatz bis zum Anschlag nach unten drehen. Gesetztes Oberteil nur im Uhrzeigersinn drehen."],
+["Faustformeln","Unterflur: Rohrleitungsdurchmesser x 10 = l/min (80 mm = 800 l/min). Überflur: x 15 (100 mm = 1.500 l/min). Überflurhydranten haben keine Beschilderung. Netzdruck meist 1,5–4 bar."],
+["Saugkorb","Hält Schmutz ab, Rückschlagventil, Ventilleine an der Ringöse. Mind. 30 cm unter der Wasseroberfläche (sonst Lufttrichter)."],
+["Schwimmsauger","Für flache Gewässer, 5 cm Wasserstand genügen. Kein Rückschlagventil."]],
+q:[
+["Unterflurhydrant, Rohr 80 mm: Wasserlieferung?","800 l/min","1.200 l/min","8.000 l/min","80 l/min"],
+["Überflurhydrant, Rohr 100 mm: Wasserlieferung?","1.500 l/min","1.000 l/min","10.000 l/min","150 l/min"],
+["Wie tief soll der Saugkorb mind. unter der Wasseroberfläche liegen?","30 cm","5 cm","10 cm","1 m"],
+["Wie viele B-Abgänge hat das Standrohr?","Zwei","Einen","Drei","Vier"],
+["Welcher Wasserstand genügt dem Schwimmsauger?","5 cm","30 cm","50 cm","1 m"],
+["Was ist nach jedem Standrohr-Einsatz mit der Klauenmutter zu tun?","Bis zum Anschlag nach unten drehen","Ganz nach oben drehen","Abschrauben","Nichts"]]},
+{n:"Wasserfortleitung",i:[
+["Systemtrenner","Verhindert, dass Löschwasser ins Leitungsnetz gedrückt wird (Trinkwasser!). Bei jeder Entnahme aus dem öffentlichen Netz; nach dem Spülen am B-Abgang."],
+["Sammelstück / Übergangsstück","Sammelstück: führt 2–3 B-Leitungen zu einer A-Leitung (A-Pumpeneingang). Übergangsstück: reduziert den Durchmesser (A auf B, B auf C, C auf D)."],
+["Verteiler","Meist B-Eingang, zwei C-Ausgänge, ein B-Ausgang. Reihenfolge in Fließrichtung: 1. Rohr links, 2. rechts, 3./B-Rohr/Sonderrohr Mitte. BV = Niederschraubventile, K = Kugelhähne."],
+["Stützkrümmer","Bei B-Strahlrohr, leitet Rückstoß zum Boden: 2 statt 3 Personen. Durchflussrichtung (Pfeil) beachten."],
+["Druckbegrenzungsventil","Fängt Druckstöße ab, vor dem Verteiler bei langen Strecken. Sollwert 0–16 bar, öffnet bei Sollwert + 0,5 bar."],
+["Kugelhahn / Zumischer","Kugelhahn (B, C, D): Absperren, z. B. am Schlauchpaket. Zumischer: Schaummittel ins Löschwasser, zwischen Verteiler und Schaumrohr in Pfeilrichtung."]],
+q:[
+["Was verhindert der Systemtrenner?","Verschmutzung des Trinkwassers","Überhitzung der Pumpe","Schlauchplatzer","Lufttrichter"],
+["Was macht ein Sammelstück?","Mehrere B-Leitungen zu einer A-Leitung","Eine A-Leitung zu drei C-Leitungen","Reduziert C auf D","Fängt Druckstöße ab"],
+["Welches Rohr wird am Verteiler in der Mitte angeschlossen?","3. Rohr / B-Rohr / Sonderrohr","1. Rohr","2. Rohr","Gar keines"],
+["Wie viele Personen braucht ein B-Strahlrohr mit Stützkrümmer mind.?","Zwei","Eine","Drei","Vier"],
+["Wann öffnet das Druckbegrenzungsventil?","Sollwert + 0,5 bar","Sollwert + 5 bar","Bei 0 bar","Bei 16 bar immer"],
+["Wo wird der Zumischer eingekuppelt?","Zwischen Verteiler und Schaumrohr","Vor dem Saugkorb","Am Hydranten","Hinter dem Schaumrohr"]]},
+{n:"Wasserabgabe",i:[
+["Hohlstrahlrohr","Ringförmige Düse, hohler Strahl: besserer Kühleffekt, größere Wurfweite. Stufenlos einstellbar, mit D-, C-, B-Anschluss. Bei verschmutztem Wasser störanfälliger. B-Rohr: ohne Stützkrümmer 3 Personen, mit mind. 2; am Verteiler in der Mitte; nicht von Leitern."],
+["Mehrzweckstrahlrohr","DM, CM, BM (M = Mehrzweck: Sprühstrahl, Wasser halt, Vollstrahl). Mundstück abschrauben verdoppelt den Durchfluss. Mit/ohne Mundstück bei 5 bar: DM 25/50, CM 100/200, BM 400/800 l/min."],
+["Sicherheitsabstände (CM)","Niederspannung (bis 1 kV): Sprühstrahl 1 m, Vollstrahl 5 m. Hochspannung (über 1 kV): Sprühstrahl 5 m, Vollstrahl 10 m. Merkregel: N-1-5 H-5-10."],
+["Schaum & Spezialgeräte","Schaumrohre: Mittel-/Schwerschaum oder Kombi, Leichtschaum braucht Generator. Mobiler Wasserwerfer: B/C, mehrere tausend l/min. Netzmittelkartusche: senkt Oberflächenspannung, ca. 1.000–3.000 l. Löschlanze/Löschnagel: schwer zugängliche Stellen."]],
+q:[
+["Durchfluss eines CM-Rohrs ohne Mundstück (5 bar)?","ca. 200 l/min","ca. 100 l/min","ca. 400 l/min","ca. 800 l/min"],
+["CM-Rohr, Hochspannung, Vollstrahl: Mindestabstand?","10 m","5 m","1 m","20 m"],
+["CM-Rohr, Niederspannung, Sprühstrahl: Mindestabstand?","1 m","5 m","10 m","0,5 m"],
+["Wofür steht das M bei DM, CM, BM?","Mehrzweck","Maschinist","Mittelschaum","Maximal"],
+["Wie viele Personen halten ein B-Hohlstrahlrohr ohne Stützkrümmer?","Drei","Eine","Zwei","Vier"],
+["Wie entsteht der Schaum im Schaumrohr?","Durch Zuführen von Luft","Im Zumischer","Im Hydranten","Durch die Pumpe"],
+["Was bewirkt eine Netzmittelkartusche?","Senkt die Oberflächenspannung des Wassers","Erhöht den Druck","Färbt das Wasser","Filtert Schmutz"]]},
+{n:"Zubehör",i:[
+["Hydrantenschlüssel","Unterflur: öffnet Hydrantendeckel und Absperrventil. Überflur (Version A/B, B mit Sechskant häufiger): Blindkupplungen, Fallmantel, Schieber."],
+["Kupplungsschlüssel","Zum Kuppeln von Saug- und Druckschläuchen (A, B, C), meist bei A-Saugschläuchen und A-Blindkupplung an der Pumpe. Hakenschlüssel oder mit Griff."],
+["Schachthaken / Saugschutzkorb","Schachthaken: Schachtdeckel anheben, immer paarweise. Saugschutzkorb: Drahtgeflecht gegen groben Schmutz, Öffnung an der Ringöse für die Ventilleine."],
+["Schlauchbrücken","Bei Straßenquerung, damit nicht gesperrt werden muss. Drei Brücken auf einer Fahrbahnseite (PKW/LKW). Verkehrssicherung beachten."]],
+q:[
+["Wie werden Schachthaken verwendet?","Immer paarweise","Einzeln","Nur mit Kette zum Standrohr","Nur von Maschinisten"],
+["Wie viele Schlauchbrücken liegen auf einer Fahrbahnseite?","Drei","Eine","Zwei","Fünf"],
+["Wozu dient der Unterflurhydrantenschlüssel?","Deckel und Absperrventil öffnen","Schläuche kuppeln","Fallmantel öffnen","Strahlrohr einstellen"],
+["Wofür wird der Kupplungsschlüssel meist verwendet?","A-Saugschläuche und A-Blindkupplung","D-Schläuche","Strahlrohre","Schachtdeckel"]]},
+{n:"Leinen und Seile",i:[
+["Feuerwehrleine","Weiß, 30 m, Reißkraft mind. 14 kN. Rettungs-, Sicherungs-, Signalleine, Teil der erweiterten PSA. Sichtprüfung nach jedem Einsatz. Lagerung im Feuerwehrmehrzweckbeutel, auch als Orientierungsleine bei schlechter Sicht."],
+["Mehrzweckleine","Rot, mind. 20 m, mind. 7 kN. Halte-, Absperr-, Ventil-, Bindeleine. Nicht zum Halten, Ablassen oder Hochziehen schwebender Gegenstände!"],
+["Seilschlauchhalter","Rot, 1,6 m, mind. 7 kN. Befestigt Schlauchleitung oder Leiter. Wird vom Atemschutztrupp mitgeführt."],
+["Kernmantel-Dynamikseil","Seilkern mit Mantel. Sicherung in absturzgefährdeten Bereichen, fängt dynamische Fallenergie ab."]],
+q:[
+["Welche Länge hat die Feuerwehrleine?","30 m","20 m","15 m","50 m"],
+["Welche Farbe hat die Mehrzweckleine?","Rot","Weiß","Gelb","Blau"],
+["Mindestreißkraft der Feuerwehrleine?","14 kN","7 kN","2 kN","30 kN"],
+["Länge des Seilschlauchhalters?","1,6 m","5 m","20 m","30 m"],
+["Wofür dürfen Mehrzweckleinen NICHT verwendet werden?","Halten schwebender Gegenstände","Bindeleine","Absperrleine","Ventilleine"],
+["Was kann ein Kernmantel-Dynamikseil?","Dynamische Fallenergie abfangen","Nur Schläuche binden","Nur Signale geben","Nichts tragen"]]},
+{n:"Knoten und Stiche",i:[
+["Halbschlag","Führen von Geräten beim Hochziehen, Einbinden von Personen auf Krankentragen."],
+["Doppelter Ankerstich","Befestigen und Führen von Ausrüstung, Anschlagen von Band-/Rundschlingen."],
+["Zimmermannsschlag","Befestigungsknoten: Sicherungsleinen (Atemschutztrupp), Hochziehen von Gegenständen. Mind. 3 Umschlingungen."],
+["Spierenstich","Sichert Knoten."],
+["Mastwurf","Gelegt oder gestochen. Anschlagen, Selbstretten, Halten, Auffangen, Halteleine am Anschlagpunkt, Auszugseil der Schiebeleiter."],
+["Schotenstich","Verbindet zwei Leinen. Nicht für Personensicherung und Personenrettung!"],
+["Brustbund","Feuerwehrleine anlegen, um eine Person im Notfall ohne Haltegurt vor Absturz zu sichern (z. B. Herabführen über Leiter)."]],
+q:[
+["Welcher Stich verbindet zwei Leinen?","Schotenstich","Mastwurf","Spierenstich","Brustbund"],
+["Wofür dient der Spierenstich?","Sicherung von Knoten","Verbinden zweier Leinen","Personensicherung","Anschlagen von Schlingen"],
+["Wie viele Umschlingungen hat der Zimmermannsschlag mind.?","3","1","2","5"],
+["Welcher Stich darf nicht zur Personenrettung eingesetzt werden?","Schotenstich","Mastwurf","Brustbund","Halbschlag"],
+["Wozu dient der Brustbund?","Person ohne Gurt vor Absturz sichern","Schläuche binden","Leitern befestigen","Knoten sichern"],
+["Wie kann ein Mastwurf ausgeführt werden?","Gelegt oder gestochen","Nur gelegt","Nur gestochen","Nur mit Handschuhen"]]}
+];
+const app=document.getElementById("app");
+const sel=new Set(D.map((_,k)=>k));
+const sh=a=>a.map(x=>[Math.random(),x]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
+const E=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+let S={};
+function home(){
+ app.innerHTML=`<h1>🚒 Wissenstest 2026</h1><p class="sub">Umgang mit Schläuchen, Armaturen &amp; Leinen – wähle deine Themen:</p>
+ <div class="row" style="margin-bottom:10px"><button class="sec" id="all">Alle</button><button class="sec" id="none">Keine</button></div>
+ ${D.map((t,k)=>`<label class="topic"><input type="checkbox" data-k="${k}" ${sel.has(k)?"checked":""}><span>${E(t.n)}<small>${t.i.length} Lernkarten · ${t.q.length} Fragen</small></span></label>`).join("")}
+ <div class="row" style="margin-top:14px"><button class="grow" id="st">📖 Durchgucken</button><button class="grow" id="qz">✍️ Abfrage / Probe</button></div>`;
+ const upd=()=>{document.getElementById("st").disabled=document.getElementById("qz").disabled=!sel.size};
+ app.querySelectorAll("input").forEach(c=>c.onchange=()=>{c.checked?sel.add(+c.dataset.k):sel.delete(+c.dataset.k);upd()});
+ all.onclick=()=>{D.forEach((_,k)=>sel.add(k));home()};none.onclick=()=>{sel.clear();home()};
+ st.onclick=startStudy;qz.onclick=startQuiz;upd();
+}
+function startStudy(){S={c:[...sel].sort().flatMap(k=>D[k].i.map(x=>({n:D[k].n,t:x[0],x:x[1]}))),p:0};study()}
+function study(){
+ const c=S.c[S.p],n=S.c.length;
+ app.innerHTML=`<div class="row"><button class="sec" id="h">← Start</button><span class="grow"></span><span class="sub" style="align-self:center;margin:0">${S.p+1} / ${n}</span></div>
+ <div class="bar"><i style="width:${(S.p+1)/n*100}%"></i></div>
+ <div class="card"><span class="tag">${E(c.n)}</span><h2>${E(c.t)}</h2><p>${E(c.x)}</p></div>
+ <div class="row"><button class="sec grow" id="pv" ${S.p?"":"disabled"}>Zurück</button><button class="grow" id="nx">${S.p<n-1?"Weiter":"Fertig"}</button></div>`;
+ h.onclick=home;pv.onclick=()=>{S.p--;study()};nx.onclick=()=>{S.p<n-1?(S.p++,study()):done()};
+ function done(){app.innerHTML=`<div class="card"><div class="big">🎉</div><h2 style="text-align:center">Alle Karten durchgesehen!</h2><div class="row"><button class="grow" id="q2">Jetzt abfragen</button><button class="sec grow" id="h2">Start</button></div></div>`;q2.onclick=startQuiz;h2.onclick=home}
+}
+function startQuiz(){S={q:sh([...sel].flatMap(k=>D[k].q.map(x=>({n:D[k].n,q:x[0],a:x[1],o:x})))),p:0,ok:0,bad:[]};quiz()}
+function quiz(){
+ const q=S.q[S.p],n=S.q.length,o=sh(q.o.slice(1));
+ app.innerHTML=`<div class="row"><button class="sec" id="h">← Start</button><span class="grow"></span><span class="sub" style="align-self:center;margin:0">Frage ${S.p+1} / ${n} · ✔ ${S.ok}</span></div>
+ <div class="bar"><i style="width:${S.p/n*100}%"></i></div>
+ <div class="card"><span class="tag">${E(q.n)}</span><h2>${E(q.q)}</h2></div>
+ <div id="os">${o.map(t=>`<button class="opt">${E(t)}</button>`).join("")}</div><div id="fb"></div>`;
+ h.onclick=home;
+ app.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+  const r=b.textContent===q.a;r?S.ok++:S.bad.push({q:q.q,a:q.a,g:b.textContent});
+  app.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.textContent===q.a)x.classList.add("ok")});
+  if(!r)b.classList.add("bad");
+  fb.innerHTML=`<p><b>${r?"✅ Richtig!":"❌ Leider falsch."}</b>${r?"":" Richtig ist: "+E(q.a)}</p><button class="grow" style="width:100%" id="nx">${S.p<n-1?"Nächste Frage":"Ergebnis"}</button>`;
+  nx.onclick=()=>{S.p++;S.p<n?quiz():result()};nx.scrollIntoView({block:"nearest"});
+ });
+}
+function result(){
+ const n=S.q.length,pc=Math.round(S.ok/n*100);
+ app.innerHTML=`<div class="card"><div class="big">${pc>=80?"🏆":pc>=50?"👍":"💪"} ${pc} %</div><p style="text-align:center">${S.ok} von ${n} richtig</p></div>
+ ${S.bad.length?`<h2>Nochmal anschauen</h2>${S.bad.map(w=>`<div class="wrong"><b>${E(w.q)}</b><br>✔ ${E(w.a)}<br><small>Deine Antwort: ${E(w.g)}</small></div>`).join("")}`:""}
+ <div class="row" style="margin-top:14px">${S.bad.length?`<button class="grow" id="rt">Nur Fehler wiederholen</button>`:""}<button class="sec grow" id="ag">Neue Probe</button><button class="sec grow" id="hm">Start</button></div>`;
+ const bad=S.bad.map(w=>S.q.find(x=>x.q===w.q));
+ if(S.bad.length)rt.onclick=()=>{S={q:sh(bad),p:0,ok:0,bad:[]};quiz()};
+ ag.onclick=startQuiz;hm.onclick=home;
+}
+home();
+</script></body></html>
